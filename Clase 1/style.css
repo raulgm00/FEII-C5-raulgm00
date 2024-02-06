@@ -1,0 +1,14 @@
+body{
+    background-color: cornflowerblue;
+    color:rgb(29, 37, 37);
+    text-align: center;
+}
+
+article{
+    margin: 10px;
+}
+
+.subtitulo-container{
+    border: 2px #FFF solid;
+    border-radius: 10px;
+}
