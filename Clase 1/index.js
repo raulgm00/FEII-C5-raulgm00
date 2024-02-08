@@ -7,8 +7,14 @@ alert('Enviar una alerta al usuario')
 let name = prompt('Coloque su nombre:')
 console.log(name)
 
-if(name === null){
+if(!name){
     name = prompt('Debe colocar un nombre:')
+}
+name = 2 || 'palabra' || [] || [1,2,3,4] || {}
+if(name === null  || name === undefined || name === false || name === ''){
+    console.log('Name da true')
+} else {
+    console.log('name es igual a null o undefined')
 }
 
 for(let i = 1; i <= 10; i++){
