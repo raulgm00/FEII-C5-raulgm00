@@ -48,10 +48,17 @@ for(let i = 0; i < queryP.length; i++){
 
 const nav = document.getElementsByTagName('nav')
 nav[0].style.display = 'flex'
-nav[0].style.flexDirection = 'column'
+nav[0].style.flexDirection = 'row'
+nav[0].style.justifyContent = 'space-around'
+// const aTag = document.getElementsByTagName('a')
+// console.log('aTag', aTag)
+// for(let i = 0; i < aTag.length; i++){
+//     aTag[i].style.margin = '10px'
+// }
+
 
 const section = document.getElementById('inners')
-section.innerHTML += `<p>Hola, Denis</p>` //Ejemplo innerHTML
+section.innerHTML += `<h4>Hola, Denis</h4><hr>` //Ejemplo innerHTML
 section.innerText += `<p>Hola, Raul</p>` //Ejemplo innerText 
 
 let age = 30
@@ -99,16 +106,26 @@ console.log(divAppend)
 
 divAppend.appendChild(newP)
 
-function generarElementos(titulo){
+function generarElementos(titulo, descripcion){
     let h2 = document.createElement('h2')
+    let p = document.createElement('p')
+    
     h2.textContent = titulo
+    p.textContent = descripcion
 
-    return h2
+    sectionCreate.appendChild(h2)
+    sectionCreate.appendChild(p)
+    // return h2
 }
 
 const sectionCreate = document.getElementById('creador-articulos')
 console.log(sectionCreate)
 
-sectionCreate.appendChild(generarElementos('Articulo creado 1'))
-sectionCreate.appendChild(generarElementos('Articulo creado 2'))
-sectionCreate.appendChild(generarElementos('Articulo creado 3'))
+generarElementos('Titulo del primer articulo', 'Descripcion del primer articulo')
+generarElementos('Titulo del segundo articulo', 'Descripcion del segundo articulo')
+generarElementos('Titulo del tercero articulo', 'Descripcion del tercero articulo')
+
+
+// sectionCreate.appendChild(generarElementos('Articulo creado 1'))
+// sectionCreate.appendChild(generarElementos('Articulo creado 2'))
+// sectionCreate.appendChild(generarElementos('Articulo creado 3'))
