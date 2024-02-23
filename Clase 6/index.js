@@ -9,23 +9,15 @@
 // Metodo mouseover y mouseout
 const div = document.getElementById('root')
 const contenedor = document.getElementById('contenedor')
-div.addEventListener('mouseover', () => {
-    div.innerHTML = `<p>Quita el mouse de mi</p>`
 
-    contenedor.innerHTML = `
-        <p>Elemento 1</p>
-        <p>Elemento 2</p>
-        <p>Elemento 3</p>
-    `
-})
-
-
-div.addEventListener('mouseout', () => {
-    div.innerHTML = `<p>Reposa el mouse sobre mi</p>`
-
-    contenedor.innerHTML = ''
-})
-
+div.addEventListener("mouseover", function() {
+    div.innerHTML = "Quita el mouse encima mio";
+    contenedor.innerHTML = "<p>Elemento 1</p><p>Elemento 2</p><p>Elemento 3</p>";
+});
+div.addEventListener("mouseout", function() {
+    div.innerHTML = "Reposa el mouse sobre mi";
+    contenedor.innerHTML = "";
+});
 
 //preventDefault
 const aTag = document.getElementById('anchor')
