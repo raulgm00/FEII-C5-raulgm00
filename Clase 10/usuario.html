@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <main>
+        <button onclick="logOut()">Oops esos no son mi datos...</button>
+        <button onclick="borrarTodo()">Borrar Todo</button>
+    </main>
+
+    <script type="text/javascript">
+        const main = document.querySelector('main')
+        //Ejemplo para renderizar elementos con queryParams
+        // const queryParams = new URLSearchParams(window.location.search)
+        // const queryNombre = queryParams.get('nombre')
+        // console.log(queryNombre)
+        // const nombre = document.getElementById('nombre')
+        // main.innerHTML = `<h1>Usuario: ${queryNombre}<h1>`
+
+        // Ejemplo para renderizar mediante local o session Storage
+        
+        // const logOut = document.getElementById('cerrar-sesion')
+        const lsUser = JSON.parse(localStorage.getItem('user'))
+        const ssUser = JSON.parse(sessionStorage.getItem('user'))
+        if(lsUser) {
+            main.innerHTML += `
+                <h1>Datos de usuario</h1>
+                <p> Nombre: <span>${lsUser.nombre}</span></p>
+                <p> Email: <span>${lsUser.email}</span></p>
+                <p> Edad: <span>${lsUser.edad}</span></p>
+                <p> Pais: <span>${lsUser.pais}</span></p>
+                <p> Usuario: <span>${lsUser.usuario.value}</span></p>
+            `
+        }
+        if(ssUser) {
+            main.innerHTML += `
+                <h1>Datos de usuario</h1>
+                <p> Nombre: <span>${ssUser.nombre}</span></p>
+                <p> Email: <span>${ssUser.email}</span></p>
+                <p> Edad: <span>${ssUser.edad}</span></p>
+                <p> Pais: <span>${ssUser.pais}</span></p>
+                <p> Usuario: <span>${ssUser.usuario.value}</span></p>
+            `
+        }
+
+        function logOut() {
+            console.log('click')
+            localStorage.removeItem('user')
+            sessionStorage.removeItem('user')
+            location.replace('index.html')
+        }
+
+        function borrarTodo(){
+            localStorage.clear()
+            sessionStorage.clear()
+        }
+
+    </script>
+</body>
+</html>
