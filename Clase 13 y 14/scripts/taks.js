@@ -65,7 +65,10 @@ window.addEventListener('load', function () {
       }
     })
     .then(res => res.json())
-    .then(data => console.log(data))
+    .then(data => {
+      console.log(data)
+      renderizarTareas(data) //Paso el listado a renderizarTareas
+    })
 
 
 
@@ -77,6 +80,7 @@ window.addEventListener('load', function () {
   /* -------------------------------------------------------------------------- */
 
   formCrearTarea.addEventListener('submit', function (event) {
+    
     
 
 
@@ -90,12 +94,54 @@ window.addEventListener('load', function () {
   /* -------------------------------------------------------------------------- */
   function renderizarTareas(listado) {
 
+    //Obtengo los contenedores para cada tarea
+    const tareasPendientes = document.querySelector('.tareas-pendientes')
+    const tareasTerminadas = document.querySelector('.tareas-terminadas')
+
+    // Limpio ambos contenedores en caso de que haya algun elemento anterior
+    tareasPendientes.innerHTML = ''
+    tareasTerminadas.innerHTML = ''
+
+    //Obtengo y renderizo el numero total de tareas finalizadas
+    const nroTerminadas = document.querySelector('cantidad-finalizadas')
+    let contador = 0
+    nroTerminadas.innerText = contador
 
 
+    // Realizo una iteración donde voy a renderizar la lista de tareas
+    // Utilizo listado que lo trae por parametro desde la función consultarTareas
+    listado.forEach(tarea => {
 
-
-
-
+      // Realizo una condición donde si la tarea está completada 
+      // lo renderizo en un contenedor o en otro
+      if(tarea.completed) {
+        contador++ // Sumo al contador para renderizar el número de tareas terminadas
+        tareasTerminadas.innerHTML += `
+        <li class="tarea">
+          <div class="hecha">
+            <i class="fa-regular fa-circle-check"></i>
+          </div>
+          <div class="descripcion">
+            <p class="nombre">${tarea.description}</p>
+            <div class="cambios-estados">
+              <button class="change incompleta" id="${tarea.id}" ><i class="fa-solid fa-rotate-left"></i></button>
+              <button class="borrar" id="${tarea.id}"><i class="fa-regular fa-trash-can"></i></button>
+            </div>
+          </div>
+        </li>`
+      } else {
+        tareasPendientes.innerHTML += `
+        <li class="tarea">
+          <button class="change" id="${tarea.id}"><i class="fa-regular fa-circle"></i></button>
+          <div class="descripcion">
+            <p class="nombre">${tarea.description}</p>
+            <p class="timestamp">${fecha.toLocaleDateString()}</p>
+          </div>
+        </li>`
+      }
+      //Renderizo el contador a medida que va iterando
+      numeroFinalizadas.innerText = contador;
+    })
   };
 
   /* -------------------------------------------------------------------------- */
