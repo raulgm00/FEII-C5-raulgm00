@@ -140,7 +140,7 @@ window.addEventListener('load', function () {
         </li>`
       }
       //Renderizo el contador a medida que va iterando
-      numeroFinalizadas.innerText = contador;
+      nroTerminadas.innerText = contador;
     })
   };
 
