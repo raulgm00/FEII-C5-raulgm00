@@ -5,7 +5,8 @@
 window.addEventListener('load', function () {
 
   /* ---------------- variables globales y llamado a funciones ---------------- */
-  
+  renderizarSkeletons(3, ".tareas-pendientes");
+  // renderizarSkeletons(3, ".tareas-terminadas");
   const token = localStorage.getItem('jwt')
   if(!token){
     location.replace('./index.html')
@@ -15,7 +16,11 @@ window.addEventListener('load', function () {
   const formCrearTarea = document.querySelector('.nueva-tarea')
 
   obtenerNombreUsuario()
-  consultarTareas()
+
+  setTimeout(() => {
+    consultarTareas()
+  }, 2000)
+  
   /* -------------------------------------------------------------------------- */
   /*                          FUNCIÓN 1 - Cerrar sesión                         */
   /* -------------------------------------------------------------------------- */

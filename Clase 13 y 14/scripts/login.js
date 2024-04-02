@@ -12,8 +12,18 @@ window.addEventListener('load', function () {
     form.addEventListener('submit', function (event) {
         event.preventDefault()
         console.log('haciendo el submit')
+        mostrarSpinner()
+        if(!validarEmail(email.value)){
+            alert('El email debe ser válido ')
+            return;
+        }
+        if(!validarContrasenia(pass.value)){
+            alert('La contraseña debe tener al menos 6 caracteres')
+            return;
+        }
+
         const body = {
-            email: email.value,
+            email: normalizarEmail(email.value),
             password: pass.value
         }
         const settings = {
@@ -23,6 +33,9 @@ window.addEventListener('load', function () {
                 'Content-Type': 'application/json'
             }
         }
+
+
+
 
         realizarLogin(settings)
 
@@ -40,9 +53,16 @@ window.addEventListener('load', function () {
             console.log(data)
             localStorage.setItem('jwt', data.jwt)
             console.log('Pudiste loguear')
-            location.replace('./mis-tareas.html')
+            setTimeout(() => {
+                ocultarSpinner()
+                location.replace('./mis-tareas.html')
+            }, 2000)
+            
         })
-        .catch(err => console.log(err))
+        .catch(err => {
+            ocultarSpinner()
+            console.log(err)
+        })
     };
 
 
