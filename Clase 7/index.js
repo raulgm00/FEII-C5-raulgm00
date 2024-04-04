@@ -2,7 +2,7 @@
 
 let nombre = ''
 let pic = ''
-
+// Obtiene el id del elemento
 const main = document.querySelector('#container')
 
 while(!nombre || nombre.length < 3){

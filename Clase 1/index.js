@@ -10,11 +10,15 @@ console.log(name)
 if(!name){
     name = prompt('Debe colocar un nombre:')
 }
-name = 2 || 'palabra' || [] || [1,2,3,4] || {}
+name = 2 || 'palabra' || [] || [1,2,3,4] || {};
+
+console.log(`name = ${name}`);
+
 if(name === null  || name === undefined || name === false || name === ''){
-    console.log('Name da true')
-} else {
     console.log('name es igual a null o undefined')
+    
+} else {
+    console.log('------> Name da true')
 }
 
 for(let i = 1; i <= 10; i++){
@@ -53,6 +57,8 @@ console.log(obj.email)
 function myFunc() {
     console.log('En 10 años vas a tener',obj.age + 10)
 }
+
+
 myFunc()
 
 const sum = (x,y) => {
